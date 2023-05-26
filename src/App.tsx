@@ -62,7 +62,7 @@ function ActionAreaCard({ title, media, locked }: ActionAreaCardProps) {
             component="img"
             height="100"
             image={media}
-            alt="green iguana"
+            alt={title}
             sx={{ width: iconSize, height: iconSize }}
           />
           <Box
@@ -94,7 +94,7 @@ function App() {
     { title: 'YouTube', media: "youtube.png", locked: false },
     { title: 'bandcamp', media: "bandcamp.png", locked: false },
     { title: 'Spotify', media: "spotify.png", locked: false },
-    { title: 'iTunes', media: "apple.svg", locked: false },
+    { title: 'iTunes', media: "apple.png", locked: false },
     { title: 'POST-PUNK.com', media: "post-punk.png", locked: false },
     { title: 'Quanticode Album Download', media: "quanticode.jpg", locked: true },
   ]
@@ -122,7 +122,7 @@ function App() {
               alt="2 Forks"
               src="/two-forks.png"
               variant="square"
-              sx={{ width: "auto", height: 128 }}
+              sx={{ width: "173.68px", height: "128px" }}
             />
             <Stack spacing="1" direction="row">
               {topLinks.map(item => (
