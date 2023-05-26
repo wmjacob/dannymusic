@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { atom, useAtom } from 'jotai'
+// import { atom, useAtom } from 'jotai'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -32,9 +32,9 @@ const darkTheme = createTheme({
   },
 });
 
-const modalAtom = atom({
-  modalShowing: false,
-});
+// const modalAtom = atom({
+//   modalShowing: false,
+// });
 
 interface ActionAreaCardProps {
   title: string;
@@ -88,7 +88,8 @@ function ActionAreaCard({ title, media, locked }: ActionAreaCardProps) {
 }
 
 function App() {
-  const [modalState, setModalState] = useAtom(modalAtom);
+  // TODO add password
+  // const [modalState, setModalState] = useAtom(modalAtom);
   const links: ActionAreaCardProps[] = [
     { title: 'YouTube', media: "youtube.png", locked: false },
     { title: 'bandcamp', media: "bandcamp.png", locked: false },
