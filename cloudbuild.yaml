@@ -8,7 +8,7 @@ steps:
 # Deploy container image to Cloud Run
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   entrypoint: gcloud
-  args: ['run', 'deploy', 'dannymusic', '--image', 'gcr.io/dannymusic/dannymusic:$COMMIT_SHA', '--region', 'us-central1', '--concurrency', '80', '--max-instances', '5', '--memory', '256Mi', '--service-account', 'cloud-run@dannymusic.iam.gserviceaccount.com', '--timeout', '30']
+  args: ['run', 'deploy', 'dannymusic', '--image', 'gcr.io/dannymusic/dannymusic:$COMMIT_SHA', '--region', 'us-central1', '--concurrency', '80', '--max-instances', '5', '--memory', '256Mi', '--service-account', 'builder@dannymusic.iam.gserviceaccount.com', '--timeout', '30']
 images:
 - gcr.io/dannymusic/dannymusic:$COMMIT_SHA
 logsBucket: 'gs://dannymusic-build-logs'
