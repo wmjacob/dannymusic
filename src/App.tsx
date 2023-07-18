@@ -12,7 +12,7 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import CssBaseline from '@mui/material/CssBaseline';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import YoutubeIcon from '@mui/icons-material/Youtube';
+import YoutubeIcon from '@mui/icons-material/YouTube';
 import './App.css'
 
 const queryClient = new QueryClient()
