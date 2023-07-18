@@ -7,9 +7,8 @@
   min-height: 200vh;
 }
 
-#wrapper {
-  width: 100%;
-  background-image: url('smallcover.jpg');
+body {
+  /* background-image: url('smallcover.jpg'); */
   background-attachment: fixed;
   background-size: cover;
   background-position: center;
