@@ -49,13 +49,11 @@ function App() {
 
   return (
     <Box id="mainContent">
-
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={darkTheme}>
           <CssBaseline />
           <Container
             disableGutters
-            id="mainContent"
           >
             <Box
               display="flex"

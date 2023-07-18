@@ -15,7 +15,7 @@ const getSecretValue = async (secret) => {
       res.status(500).json({ error: 'Internal Error' });
       return;
     }
-    return JSON.parse(Buffer.from(version.payload.data.toString(), 'base64'));
+    return version.payload.data.toString();
   }
   return process.env[`SECRET_${secret.toUpperCase().replaceAll('-', '_')}`];
 }
