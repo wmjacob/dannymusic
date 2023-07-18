@@ -68,7 +68,7 @@ function App() {
                 <a href="/">
                   <Avatar
                     alt="2 Forks"
-                    src="/two-forks.png"
+                    src="/two-forks.webp"
                     variant="square"
                     sx={{ width: '173.68px', height: '128px' }}
                   />

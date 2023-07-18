@@ -127,12 +127,12 @@ function ActionAreaCard({ title, media, locked, link }: ActionAreaCardProps) {
 const HomeComponent = () => {
   const { data: bioData } = getBioLink();
   const links: ActionAreaCardProps[] = [
-    { title: 'Bio', media: "bio.jpg", locked: false, link: bioData?.link },
-    { title: 'YouTube', media: "youtube.png", locked: false, link: 'https://www.youtube.com/@2forksmusic' },
+    { title: 'Bio', media: "bio.webp", locked: false, link: bioData?.link },
+    { title: 'YouTube', media: "youtube.webp", locked: false, link: 'https://www.youtube.com/@2forksmusic' },
     // { title: 'bandcamp', media: "bandcamp.png", locked: false },
     // { title: 'Spotify', media: "spotify.png", locked: false },
     // { title: 'iTunes', media: "apple.svg", locked: false },
-    { title: 'Quanticode Album Download', media: "quanticode.jpg", locked: true },
+    { title: 'Quanticode Album Download', media: "quanticode.webp", locked: true },
   ];
   return (
     <Stack spacing={2} minWidth="50vw">
