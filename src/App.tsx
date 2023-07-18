@@ -1,10 +1,9 @@
 import { ReactNode } from 'react';
+import { BrowserRouter as Router } from 'react-router-dom';
+import Routes from './Routes';
+import { QueryClient, QueryClientProvider } from 'react-query'
+
 // import { atom, useAtom } from 'jotai'
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
-import Typography from '@mui/material/Typography';
-import { CardActionArea } from '@mui/material';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
@@ -15,8 +14,9 @@ import CssBaseline from '@mui/material/CssBaseline';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
-
 import './App.css'
+
+const queryClient = new QueryClient()
 
 const darkTheme = createTheme({
   palette: {
@@ -32,113 +32,69 @@ const darkTheme = createTheme({
   },
 });
 
-// const modalAtom = atom({
-//   modalShowing: false,
-// });
-
-interface ActionAreaCardProps {
-  title: string;
-  media: string;
-  locked: boolean;
-}
 
 interface TopLinkProps {
   label: string;
   media: ReactNode;
-}
-
-const iconSize = '40px';
-
-function ActionAreaCard({ title, media, locked }: ActionAreaCardProps) {
-  return (
-    <Card sx={{ "width": "100%" }}>
-      <CardActionArea>
-        <Box
-          display="flex"
-          alignItems="center"
-          padding={1}
-        >
-          <CardMedia
-            component="img"
-            height="100"
-            image={media}
-            alt={title}
-            sx={{ width: iconSize, height: iconSize }}
-          />
-          <Box
-              display="flex"
-              alignItems="center"
-              justifyContent="center"
-              flexGrow={1}
-              paddingRight={iconSize}
-          >
-            <CardContent>
-              <Typography variant="body1" component="div">
-                {locked && '🔒 '}{title}
-              </Typography>
-            </CardContent>
-            {/* padding adjustment div */}
-            <div />
-          </Box>
-        </Box>
-      </CardActionArea>
-    </Card>
-  );
-
+  link: string;
 }
 
 function App() {
-  // TODO add password
-  // const [modalState, setModalState] = useAtom(modalAtom);
-  const links: ActionAreaCardProps[] = [
-    { title: 'YouTube', media: "youtube.png", locked: false },
-    { title: 'bandcamp', media: "bandcamp.png", locked: false },
-    { title: 'Spotify', media: "spotify.png", locked: false },
-    { title: 'iTunes', media: "apple.png", locked: false },
-    { title: 'POST-PUNK.com', media: "post-punk.png", locked: false },
-    { title: 'Quanticode Album Download', media: "quanticode.jpg", locked: true },
-  ]
+
   const topLinks: TopLinkProps[] = [
-    { media: <TwitterIcon />, label: 'Twitter' },
-    { media: <FacebookIcon />, label: 'Facebook' },
-    { media: <InstagramIcon />, label: 'Instagram' },
+    { media: <TwitterIcon />, label: 'Twitter', link: '#' },
+    { media: <FacebookIcon />, label: 'Facebook', link: '#' },
+    { media: <InstagramIcon />, label: 'Instagram', link: '#' },
   ];
 
   return (
-    <ThemeProvider theme={darkTheme}>
-      <CssBaseline />
-      <Container
-        disableGutters
-      >
-        <Box
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-          alignItems="center"
-          minHeight="100vh"
-        >
-          <Stack spacing={3} sx={{ minWidth: 0 }}>
-            <Avatar
-              alt="2 Forks"
-              src="/two-forks.png"
-              variant="square"
-              sx={{ width: "173.68px", height: "128px" }}
-            />
-            <Stack spacing="1" direction="row">
-              {topLinks.map(item => (
-                <IconButton aria-label={item.label}>
-                  {item.media}
-                </IconButton>
-              ))}
-            </Stack>
-            <Stack spacing={2} minWidth="50vw">
-              {links.map(link => <ActionAreaCard {...link} />)}
-            </Stack>
-          </Stack>
+    <Box id="mainContent">
 
-        </Box>
-      </Container>
-    </ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={darkTheme}>
+          <CssBaseline />
+          <Container
+            disableGutters
+            id="mainContent"
+          >
+            <Box
+              display="flex"
+              flexDirection="column"
+              justifyContent="center"
+              alignItems="center"
+              minHeight="100vh"
+            >
+              <Stack spacing={3} sx={{ minWidth: 0 }}>
+                <Stack
+                  width="100%"
+                >
+                <a href="/">
+                  <Avatar
+                    alt="2 Forks"
+                    src="/two-forks.png"
+                    variant="square"
+                    sx={{ width: '173.68px', height: '128px' }}
+                  />
+                </a>
+                <Stack direction="row">
+                  {topLinks.map((item, index) => (
+                    <a key={index} href={item.link} rel="noopener">
+                      <IconButton aria-label={item.label}>
+                        {item.media}
+                      </IconButton>
+                    </a>
+                  ))}
+                </Stack>
+                </Stack>
+                <Router>
+                  <Routes />
+                </Router>
+              </Stack>
+            </Box>
+          </Container>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </Box>
   );
 
 }

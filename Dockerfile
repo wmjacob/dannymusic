@@ -16,7 +16,9 @@ RUN npm install express
 
 FROM astefanutti/scratch-node
 
-COPY --from=builder /app /
+WORKDIR /app
+
+COPY --from=builder /app ./
 
 EXPOSE 3000
 

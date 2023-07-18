@@ -2,19 +2,20 @@
  * Module dependencies.
  */
 
-import express from 'express';
-import path from 'path';
-import http from 'http';
-import { fileURLToPath } from 'url';
+const express = require('express');
+const path = require('path');
+const http = require('http');
+// const bodyParser = require('body-parser');
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
+const apiRouter = require('./server/api');
 const app = express();
 
+// app.use(bodyParser.json());
+// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'dist')));
+app.use('/api/', apiRouter);
 app.use('/*', express.static('./dist/index.html'));
 
 /**
@@ -22,6 +23,7 @@ app.use('/*', express.static('./dist/index.html'));
  */
 
 const port = normalizePort(process.env.PORT || '3000');
+
 app.set('port', port);
 
 /**
@@ -95,4 +97,3 @@ function onListening() {
     : 'port ' + addr.port;
   console.debug('Listening on ' + bind);
 }
-
