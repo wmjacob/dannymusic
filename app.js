@@ -5,16 +5,15 @@
 const express = require('express');
 const path = require('path');
 const http = require('http');
-// const bodyParser = require('body-parser');
 
 const apiRouter = require('./server/api');
 const app = express();
 
-// app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'dist')));
+app.use('/robots.txt', express.static('./robots.txt'));
+app.use('/sitemap.xml', express.static('./sitemap.xml'));
 app.use('/api/', apiRouter);
 app.use('/*', express.static('./dist/index.html'));
 

@@ -1,0 +1,2 @@
+Sitemap: https://2forksmusic.com/sitemap.xml
+User-agent: *

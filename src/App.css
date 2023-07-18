@@ -6,10 +6,3 @@
   padding: 2rem;
   min-height: 200vh;
 }
-
-body {
-  /* background-image: url('smallcover.jpg'); */
-  background-attachment: fixed;
-  background-size: cover;
-  background-position: center;
-}

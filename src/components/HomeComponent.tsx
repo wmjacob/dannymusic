@@ -98,7 +98,6 @@ function ActionAreaCard({ title, media, locked, link }: ActionAreaCardProps) {
         slotProps={{ backdrop: { style: { backgroundColor: 'rgba(1, 1, 1, .15)' }}}}
         open={modalState.modalShowing}
         onClose={() => setModalState({ modalShowing: false })}
-        sx={{bgColor: 'rgba(0,0,0,.15)'}}
       >
         <Box sx={style}>
           <Stack spacing={2}>
@@ -129,11 +128,10 @@ const HomeComponent = () => {
   const { data: bioData } = getBioLink();
   const links: ActionAreaCardProps[] = [
     { title: 'Bio', media: "bio.jpg", locked: false, link: bioData?.link },
-    { title: 'YouTube', media: "youtube.png", locked: false, link: 'https://www.youtube.com/@2forksdc199' },
-    { title: 'bandcamp', media: "bandcamp.png", locked: false },
-    { title: 'Spotify', media: "spotify.png", locked: false },
-    { title: 'iTunes', media: "apple.svg", locked: false },
-    { title: 'POST-PUNK.com', media: "post-punk.png", locked: false },
+    { title: 'YouTube', media: "youtube.png", locked: false, link: 'https://www.youtube.com/@2forksmusic' },
+    // { title: 'bandcamp', media: "bandcamp.png", locked: false },
+    // { title: 'Spotify', media: "spotify.png", locked: false },
+    // { title: 'iTunes', media: "apple.svg", locked: false },
     { title: 'Quanticode Album Download', media: "quanticode.jpg", locked: true },
   ];
   return (

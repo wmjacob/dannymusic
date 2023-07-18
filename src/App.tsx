@@ -11,9 +11,8 @@ import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import CssBaseline from '@mui/material/CssBaseline';
-import TwitterIcon from '@mui/icons-material/Twitter';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
+import YoutubeIcon from '@mui/icons-material/Youtube';
 import './App.css'
 
 const queryClient = new QueryClient()
@@ -42,9 +41,8 @@ interface TopLinkProps {
 function App() {
 
   const topLinks: TopLinkProps[] = [
-    { media: <TwitterIcon />, label: 'Twitter', link: '#' },
-    { media: <FacebookIcon />, label: 'Facebook', link: '#' },
-    { media: <InstagramIcon />, label: 'Instagram', link: '#' },
+    { media: <FacebookIcon />, label: 'Facebook', link: 'https://www.facebook.com/2forksmusic' },
+    { media: <YoutubeIcon />, label: 'Youtube', link: 'https://www.youtube.com/@2forksmusic' },
   ];
 
   return (
@@ -60,7 +58,8 @@ function App() {
               flexDirection="column"
               justifyContent="center"
               alignItems="center"
-              minHeight="100vh"
+              minHeight="80vh"
+              sx={{ backgroundColor: "rgba(0,0,0,.2)" }}
             >
               <Stack spacing={3} sx={{ minWidth: 0 }}>
                 <Stack
