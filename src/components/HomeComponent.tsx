@@ -10,13 +10,14 @@ import Modal from '@mui/material/Modal';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 
-import { getBioLink, getDownloadLink } from '../Actions';
+import { getBioLink, getDownloadLink, getContactEmail } from '../Actions';
 
 interface ActionAreaCardProps {
   title: string;
   media: string;
   link?: string;
   locked: boolean;
+  onClick?: Function;
 }
 
 const modalAtom = atom({
@@ -42,13 +43,16 @@ const style = {
 
 const iconSize = '40px';
 
-function ActionAreaCard({ title, media, locked, link }: ActionAreaCardProps) {
+function ActionAreaCard({ title, media, locked, link, onClick }: ActionAreaCardProps) {
   const [modalState, setModalState] = useAtom(modalAtom);
   const [passwordState, setPasswordState] = useAtom(passwordAtom);
 
   const handleClick = () => {
     if (locked) {
       setModalState({ modalShowing: true });
+    }
+    if (onClick) {
+      onClick();
     }
   };
 
@@ -126,13 +130,24 @@ function ActionAreaCard({ title, media, locked, link }: ActionAreaCardProps) {
 
 const HomeComponent = () => {
   const { data: bioData } = getBioLink();
+
+  const openContactUs = async () => {
+    const data = await getContactEmail();
+    console.log("HERE");
+    console.log(data)
+    if (data?.email) {
+      window.open(`mailto:${data.email}`);
+    }
+  };
+
   const links: ActionAreaCardProps[] = [
     { title: 'Bio', media: "bio.webp", locked: false, link: bioData?.link },
     { title: 'YouTube', media: "youtube.webp", locked: false, link: 'https://www.youtube.com/@2forksmusic' },
-    // { title: 'bandcamp', media: "bandcamp.png", locked: false },
+    { title: 'bandcamp', media: "bandcamp.webp", locked: false, link: 'https://2forksmusic.bandcamp.com' },
     // { title: 'Spotify', media: "spotify.png", locked: false },
     // { title: 'iTunes', media: "apple.svg", locked: false },
     { title: 'Quanticode Album Download', media: "quanticode.webp", locked: true },
+    { title: 'Contact Us', media: "two-forks.webp", onClick: openContactUs, locked: false },
   ];
   return (
     <Stack spacing={2} minWidth="50vw">

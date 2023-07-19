@@ -2,9 +2,10 @@ const express = require('express');
 const router = express.Router();
 const { SecretManagerServiceClient } = require('@google-cloud/secret-manager');
 
-const DOWNLOAD_PASSWORD_SECRET = 'album-access-password'
-const DOWNLOAD_LINK_SECRET = 'album-access-link'
-const BIO_LINK_SECRET = 'bio-access-link'
+const DOWNLOAD_PASSWORD_SECRET = 'album-access-password';
+const DOWNLOAD_LINK_SECRET = 'album-access-link';
+const BIO_LINK_SECRET = 'bio-access-link';
+const CONTACT_EMAIL_SECRET = 'contact-email-secret';
 
 const getSecretValue = async (secret) => {
   if (process.env.NODE_ENV !== 'development') {
@@ -40,6 +41,13 @@ router.post('/bio-link', async function(_req, res) {
   const bioSecret = await getSecretValue(BIO_LINK_SECRET);
   res.status(200).json({
     link: bioSecret,
+  });
+});
+
+router.post('/contact-email', async function(_req, res) {
+  const emailSecret = await getSecretValue(CONTACT_EMAIL_SECRET);
+  res.status(200).json({
+    email: emailSecret,
   });
 });
 
