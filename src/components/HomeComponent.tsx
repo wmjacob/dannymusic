@@ -56,7 +56,7 @@ function ActionAreaCard({ title, media, locked, link, onClick }: ActionAreaCardP
     }
   };
 
-  const checkPassword = async (event: Event) => {
+  const checkPassword = async (event: React.FormEvent<EventTarget>) => {
     if (event) {
       event.preventDefault();
     }
