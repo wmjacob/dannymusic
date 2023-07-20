@@ -56,12 +56,15 @@ function ActionAreaCard({ title, media, locked, link, onClick }: ActionAreaCardP
     }
   };
 
-  const checkPassword = async () => {
+  const checkPassword = async (event: Event) => {
+    if (event) {
+      event.preventDefault();
+    }
     const data = await getDownloadLink(passwordState.password);
-    setModalState({ modalShowing: false });
     if (data?.link) {
       window.open(data.link, '_self');
     }
+    setModalState({ modalShowing: false });
   };
 
   return (
