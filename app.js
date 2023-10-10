@@ -3,19 +3,40 @@
  */
 
 const express = require('express');
+const bodyParser = require('body-parser');
 const path = require('path');
 const http = require('http');
-
+const compression = require('compression');
 const apiRouter = require('./server/api');
 const app = express();
 
-app.use(express.json());
+app.use(bodyParser.json());
+
+app.use(compression());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/robots.txt', express.static('./robots.txt'));
-app.use('/sitemap.xml', express.static('./sitemap.xml'));
+app.use('/sitemap.xml', express.
+static('./sitemap.xml'));
 app.use('/api/', apiRouter);
-app.use('/*', express.static('./dist/index.html'));
+
+app.get('/', (req, res) => {
+  const app = ReactDOMServer.renderToString('<App />');
+  const indexFile = path.resolve('./build/index.html');
+
+  fs.readFile(indexFile, 'utf8', (err, data) => {
+    if (err) {
+      console.error('Something went wrong:', err);
+      return res.status(500).send('Oops, better luck next time!');
+    }
+
+    return res.send(
+      data.replace('<div id="root"></div>', `<div id="root">${app}</div>`)
+    );
+  });
+});
+
+app.use(express.static('./dist'));
 
 /**
  * Get port from environment and store in Express.

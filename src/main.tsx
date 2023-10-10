@@ -1,10 +1,12 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './App.tsx'
+import React from 'react';
+import ReactDOM from 'react-dom';
 import './index.css'
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+import App from './App.tsx';
+
+ReactDOM.hydrate(
   <React.StrictMode>
     <App />
   </React.StrictMode>,
-)
+  document.getElementById('root')
+);

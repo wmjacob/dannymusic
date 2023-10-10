@@ -4,8 +4,8 @@ interface BioLinkResponse {
     link?: string
 }
 
-interface ContactEmailResponse {
-    email?: string
+type ContactEmailResponse = {
+    success?: boolean;
 }
 
 export function getBioLink() {
@@ -22,15 +22,27 @@ export function getBioLink() {
     ));
 }
 
-export const getContactEmail = () =>
+type ContactBodyType = {
+    email: string;
+    firstName: string;
+    lastName: string;
+    message: string;
+    phone?: string;
+};
+
+export const sendContactEmail = (body: ContactBodyType) =>
     fetch('/api/contact-email', {
+        body: JSON.stringify(body),
         method: 'POST',
+        headers: {
+            "Content-Type": 'application/json',
+        },
     })
         .then((response) => response.json())
         .then((data) => data as ContactEmailResponse)
         .catch(() => {
-            console.log("Issue getting contact email")
-        })
+            console.log("Issue sending contact email")
+        });
 
 
 export const getDownloadLink = (password: string) =>

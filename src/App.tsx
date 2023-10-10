@@ -1,9 +1,8 @@
 import { ReactNode } from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query'
 import { BrowserRouter as Router } from 'react-router-dom';
 import Routes from './Routes';
-import { QueryClient, QueryClientProvider } from 'react-query'
 
-// import { atom, useAtom } from 'jotai'
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Avatar from '@mui/material/Avatar';
 import Stack from '@mui/material/Stack';
@@ -12,8 +11,8 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import CssBaseline from '@mui/material/CssBaseline';
 import FacebookIcon from '@mui/icons-material/Facebook';
-import YoutubeIcon from '@mui/icons-material/YouTube';
-import './App.css'
+import YouTubeIcon from '@mui/icons-material/YouTube';
+
 
 const queryClient = new QueryClient()
 
@@ -42,7 +41,7 @@ function App() {
 
   const topLinks: TopLinkProps[] = [
     { media: <FacebookIcon />, label: 'Facebook', link: 'https://www.facebook.com/2forksmusic' },
-    { media: <YoutubeIcon />, label: 'Youtube', link: 'https://www.youtube.com/@2forksmusic' },
+    { media: <YouTubeIcon />, label: 'Youtube', link: 'https://www.youtube.com/@2forksmusic' },
   ];
 
   return (
@@ -70,7 +69,7 @@ function App() {
                     alt="2 Forks"
                     src="/two-forks.webp"
                     variant="square"
-                    sx={{ width: '173.68px', height: '128px' }}
+                    sx={{ width: '175px', height: 'auto' }}
                   />
                 </a>
                 <Stack direction="row">
