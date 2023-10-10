@@ -139,10 +139,11 @@ const HomeComponent = () => {
 
   const links: ActionAreaCardProps[] = [
     { title: 'Bio', media: "bio.webp", locked: false, link: bioData?.link },
+    { title: 'Spotify', media: "spotify.webp", locked: false, link: 'https://open.spotify.com/album/4u0GHShLrzhktNTebKgnxm?si=f7p1KnfiSj6McpGuaKND2w' },
+    { title: 'iTunes', media: "Apple-logo.webp", locked: false, link: 'https://music.apple.com/us/album/quanticode/1709445619' },
+    { title: 'Amazon', media: "amazon.webp", locked: false, link: 'https://amazon.com/music/player/albums/B0CK1HX6ZK?marketplaceId=ATVPDKIKX0DER&musicTerritory=US&ref=dm_sh_6p80cuTIqwNa7pMjLEll2UYIV' },
     { title: 'YouTube', media: "youtube.webp", locked: false, link: 'https://www.youtube.com/@2forksmusic' },
     { title: 'bandcamp', media: "bandcamp.webp", locked: false, link: 'https://2forksmusic.bandcamp.com' },
-    // { title: 'Spotify', media: "spotify.png", locked: false },
-    // { title: 'iTunes', media: "apple.svg", locked: false },
     { title: 'Quanticode Album Download', media: "quanticode.webp", locked: true },
     { title: 'Contact Us', media: "two-forks.webp", onClick: () => navigate('/contact'), locked: false },
   ];
