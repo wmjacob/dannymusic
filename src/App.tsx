@@ -11,6 +11,7 @@ import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import CssBaseline from '@mui/material/CssBaseline';
 import FacebookIcon from '@mui/icons-material/Facebook';
+import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
 
 
@@ -40,8 +41,9 @@ interface TopLinkProps {
 function App() {
 
   const topLinks: TopLinkProps[] = [
-    { media: <FacebookIcon />, label: 'Facebook', link: 'https://www.facebook.com/2forksmusic' },
-    { media: <YouTubeIcon />, label: 'Youtube', link: 'https://www.youtube.com/@2forksmusic' },
+    { media: <FacebookIcon fontSize='large' />, label: 'Facebook', link: 'https://www.facebook.com/2forksmusic' },
+    { media: <YouTubeIcon fontSize='large' />, label: 'Youtube', link: 'https://www.youtube.com/@2forksmusic' },
+    { media: <InstagramIcon fontSize='large' />, label: 'Youtube', link: 'https://www.instagram.com/2forksmusic' },
   ];
 
   return (
