@@ -53,7 +53,7 @@ function App() {
           <CssBaseline />
           {window.location.pathname === '/' && (
             <Alert icon={false} severity="info">
-              <Stack width="90vw" direction="row" justifyContent="space-between" alignItems="center">
+              <Stack width="80vw" direction="row" justifyContent="space-between" flexWrap="wrap" alignItems="center">
                 <Typography variant="h5">Upcoming live shows!</Typography>
                 <Button href="/live-shows" variant="outlined">View dates</Button>
               </Stack>
