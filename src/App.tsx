@@ -13,6 +13,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import { Alert, Button, Typography } from '@mui/material';
 
 
 const queryClient = new QueryClient()
@@ -39,7 +40,6 @@ interface TopLinkProps {
 }
 
 function App() {
-
   const topLinks: TopLinkProps[] = [
     { media: <FacebookIcon fontSize='large' />, label: 'Facebook', link: 'https://www.facebook.com/2forksmusic' },
     { media: <YouTubeIcon fontSize='large' />, label: 'Youtube', link: 'https://www.youtube.com/@2forksmusic' },
@@ -51,10 +51,19 @@ function App() {
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={darkTheme}>
           <CssBaseline />
+          {window.location.pathname === '/' && (
+            <Alert icon={false} severity="info">
+              <Stack width="90vw" direction="row" justifyContent="space-between" alignItems="center">
+                <Typography variant="h5">Upcoming live shows!</Typography>
+                <Button href="/live-shows" variant="outlined">View dates</Button>
+              </Stack>
+            </Alert>
+          )}
           <Container
             disableGutters
           >
             <Box
+              marginTop={3}
               display="flex"
               flexDirection="column"
               justifyContent="center"

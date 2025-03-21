@@ -138,6 +138,7 @@ const HomeComponent = () => {
   const navigate = useNavigate();
 
   const links: ActionAreaCardProps[] = [
+    { title: 'Live Shows', media: "two-forks.webp", locked: false, onClick: () => navigate('/live-shows') },
     { title: 'Bio', media: "bio.webp", locked: false, link: bioData?.link },
     { title: 'Instagram', media: "instagram.webp", locked: false, link: 'https://www.instagram.com/2forksmusic' },
     { title: 'Spotify', media: "spotify.webp", locked: false, link: 'https://open.spotify.com/album/4u0GHShLrzhktNTebKgnxm?si=f7p1KnfiSj6McpGuaKND2w' },
