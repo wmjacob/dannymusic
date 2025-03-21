@@ -16,11 +16,14 @@ app.use(compression());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/robots.txt', express.static('./robots.txt'));
-app.use('/sitemap.xml', express.
-static('./sitemap.xml'));
+app.use('/sitemap.xml', express.static('./sitemap.xml'));
 app.use('/api/', apiRouter);
 
-app.get('/', (req, res) => {
+
+
+app.use(express.static('./dist'));
+
+app.get('*', (req, res) => {
   const app = ReactDOMServer.renderToString('<App />');
   const indexFile = path.resolve('./build/index.html');
 
@@ -35,9 +38,6 @@ app.get('/', (req, res) => {
     );
   });
 });
-
-app.use(express.static('./dist'));
-
 /**
  * Get port from environment and store in Express.
  */
