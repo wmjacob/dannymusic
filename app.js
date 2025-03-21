@@ -1,7 +1,6 @@
 /**
  * Module dependencies.
  */
-
 const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
@@ -16,14 +15,11 @@ app.use(compression());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use('/robots.txt', express.static('./robots.txt'));
-app.use('/sitemap.xml', express.static('./sitemap.xml'));
+app.use('/sitemap.xml', express.
+static('./sitemap.xml'));
 app.use('/api/', apiRouter);
 
-
-
-app.use(express.static('./dist'));
-
-app.get('*', (req, res) => {
+app.get('/', (req, res) => {
   const app = ReactDOMServer.renderToString('<App />');
   const indexFile = path.resolve('./build/index.html');
 
@@ -38,6 +34,13 @@ app.get('*', (req, res) => {
     );
   });
 });
+
+app.use(express.static('./dist'));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
+});
+
 /**
  * Get port from environment and store in Express.
  */
